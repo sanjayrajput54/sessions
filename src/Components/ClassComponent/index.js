@@ -1,4 +1,8 @@
 import React,{Component} from 'react';
+import * as Store from './../../Store';
+
+// import {getToken,setToken} from './../../Store';
+
 //connect
 // Class/stateful component
 // export default class ClassComponent extends Component{
@@ -34,6 +38,24 @@ export default class ClassComponent extends Component{
         }
     }
 
+getTokenHandler(){
+    Store.getToken().then((response)=>{
+
+        console.log("Get Token",response);
+
+    },err=>console.log("Err")
+    )
+}
+
+// Lifecycle function
+
+    componentDidMount(){
+        Store.setToken("jht4757349759739jdjf").then((response)=>{
+            console.log("Set token ",response);
+        })
+    }
+
+
     render(){
         return <div style={{padding:'10px',border:'1px'}}>
         <h2>{this.props.appName}</h2>
@@ -54,6 +76,7 @@ export default class ClassComponent extends Component{
         <br/>
 
         <button onClick={()=>this.onClickHandler("Mayank")}>Click</button>
+        <button onClick={()=>this.getTokenHandler()}>Get Token</button>
 
         <p>State:  {JSON.stringify(this.state)}</p>
         </div>
