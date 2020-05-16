@@ -64,7 +64,11 @@ getTokenHandler(){
             <br/>
             Mobile: {this.state.mobile}
         <br/>
-        <input name="fristname" type="text" onChange={(e)=>this.onChangeHandler(e)}  />
+        <input name="fristname" 
+        maxLength="10"
+        pattern="[0-9]*"
+        type="text" 
+        onChange={(e)=>this.onChangeHandler(e)}  />
         <input name="lastname" type="text" onChange={(e)=>this.onChangeHandler(e)}  />
         <p>Please select your gender:</p>
         <input type="radio" id="male" name="gender" value="male" onChange={(e)=>this.onChangeHandler(e)}/>
