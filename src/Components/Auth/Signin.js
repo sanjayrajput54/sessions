@@ -1,6 +1,8 @@
 
 import React,{useEffect,useState} from 'react';
-import * as utility from './../../Utility'
+import * as utility from './../../Utility';
+
+import * as service from './../../Services';
 
 const schema={
     username:{
@@ -16,7 +18,7 @@ const schema={
 }
 
 export default (props)=>{
-
+    const {history}=props;
     const [formState,setFormState]=useState({
         valid:false,
         values:{},
@@ -52,8 +54,17 @@ export default (props)=>{
     }
 
 const onSubmit=()=>{
+    const payload={
+        ...formState.values
+    }
+    service.API_POST("auth",payload).then((res)=>{
+        debugger;
+        history.push('/home');
+    console.log("res : ",res)
+    }).catch((err)=>{
 
-
+        console.log("Err",err)
+    })
 }
 
 const hasError=(field)=>{

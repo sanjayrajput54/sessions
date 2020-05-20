@@ -4,7 +4,14 @@
 //API Integration 
 //Routing () //react-router-dom
 
-
+//npm install --save bootstrap
+//import 'bootstrap/dist/css/bootstrap.css';
+//npm install --save node-sass
+//// Override default variables before the import
+// $body-bg: #000;
+// Import Bootstrap and its default variables
+// @import '~bootstrap/scss/bootstrap.scss';
+// import './custom.scss';
 
 
 
