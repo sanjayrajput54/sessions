@@ -37,7 +37,7 @@ app.use('/',(req,res)=>{
         success:true,
         name:"ABC",
         token:"875jrhhrhkknfnfnv87"
-    });
+    }).end();
 });
 
 app.listen(8082);

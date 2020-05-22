@@ -1,4 +1,9 @@
 const details=(req,res)=>{
+    // res.set({
+    //     'Content-Type': 'application/json'
+    //   })
+    //   res.type('application/json');   // => 'application/json'
+
     res.json({
         success:true,
         data:[{

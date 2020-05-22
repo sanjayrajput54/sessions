@@ -58,11 +58,11 @@ const onSubmit=()=>{
         ...formState.values
     }
     service.API_POST("auth",payload).then((res)=>{
-        debugger;
+        debugger
         history.push('/home');
-    console.log("res : ",res)
+        console.log("res : ",res)
     }).catch((err)=>{
-
+        debugger
         console.log("Err",err)
     })
 }
@@ -71,25 +71,18 @@ const hasError=(field)=>{
     return field && formState.touch[field]==true && formState.errors[field];
 
 }
+return <>
+<div className="form-group">
+  <label htmlFor="exampleInputEmail1">Email address</label>
+  <input type="email" name="username" onChange={(evt)=>onChangeHandler(evt)} className="form-control"  aria-describedby="emailHelp" placeholder="Enter email"/>
+  {hasError("username")?<small id="emailHelp" className="form-text text-muted error">{formState.errors && formState.errors['username']}</small>:null}
+</div>
+<div className="form-group">
+  <label htmlFor="exampleInputPassword1">Password</label>
+  <input type="password" name="password" onChange={(evt)=>onChangeHandler(evt)} className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+  {hasError("password")?<small className="form-text text-muted error">{formState.errors && formState.errors['password']}</small>:null}
 
-
-return <div style={{padding:20,margin:0,border:'1px',borderColor:'#ddd'}}>
-<div style={{paddingTop:"10px",paddingLeft:"10px"}}>
-<label style={{paddingRight:'10px'}}>Username</label>
-<input type="text" name="username" onChange={(evt)=>onChangeHandler(evt)}></input>
-<div>
-{hasError("username")?<label style={{color:'red'}}>{formState.errors && formState.errors['username']}</label>:null}
 </div>
-</div>
-<div style={{paddingTop:"10px",paddingLeft:"10px"}}>
-<label style={{paddingRight:'10px'}}>Password</label>
-<input type="password" name="password" onChange={(evt)=>onChangeHandler(evt)}></input>
-<div>
-{hasError("password")?<label style={{color:'red'}}>{formState.errors && formState.errors['password']}</label>:null}
-</div>
-</div>
-<div style={{paddingTop:"10px",paddingLeft:"10px"}}>
-<button disabled={!formState.valid} onClick={()=>onSubmit()}>Sign In</button>
-</div>
-</div>
+<button disabled={!formState.valid} onClick={()=>onSubmit()} className="btn btn-primary">Submit</button>
+</>
 }

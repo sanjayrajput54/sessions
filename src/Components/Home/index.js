@@ -17,22 +17,18 @@ const [state,setState]=useState([]);
 
 
         })
-
     }
 
     useEffect(()=>{
-
     getDetails();
-
     },[])
 
 
-    return <div>
-        <h2>Home Screen</h2>
-        <ul>
-            {
-                state && state.map((item)=><li>{item.name}</li>)
-            }
-        </ul>
-    </div>
+
+    return <div class="container">
+   {state && state.map((item)=> <div class="row">
+      <div class="col">{item.name}</div>
+      <div class="col">{item.mobile}</div>
+   </div>)}
+  </div>
 }

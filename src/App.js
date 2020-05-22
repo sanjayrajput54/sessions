@@ -24,13 +24,12 @@ constructor(props){
     // return <><div>h2</div><div>3</div></>
     // return <React.Fragment><div>h2</div>,<div>3</div></React.Fragment>
 
-    return <div style={{padding:'10px'}} className="App-header">
+    return <Routes/>
+
     {/* <SigninComponent/> */}
     {/* <ClassComponent appName={this.state.appName} /> */}
     {/* <FunctionalComponent {...this.state}/> */}
 
-    <Routes/>
-    </div>
   }
 }
 
