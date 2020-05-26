@@ -5,10 +5,12 @@ import HomeComponent from './Components/Home';
 import Layout from './Components/Common/Layout';
 
 export default props=>{
+    const {permissions}=props;
+debugger
     return <BrowserRouter><Switch>
         <Route path="/" component={SignInComponent} exact></Route>
         {/* <Route path="/home" component={HomeComponent} exact></Route> */}
-        <Route path="/home" render={(props)=><Layout {...props}><HomeComponent {...props}/></Layout>} exact></Route>
+        <Route path="/home" render={(props)=><Layout {...props} permissions={permissions}><HomeComponent {...props}/></Layout>} exact></Route>
         {/* <Route path="/home" render={(props)=><Layout {...props}><HomeComponent {...props}/></Layout>} exact></Route> */}
         {/* <Route path="/home" render={(props)=><Layout {...props}><HomeComponent {...props}/></Layout>} exact></Route> */}
 

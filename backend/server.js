@@ -21,6 +21,8 @@ const cors = require('cors')
 const app=expres();
 const {singIn} =require('./Controller/Auth');
 const {details} =require('./Controller/Home');
+const {config} =require('./Controller/Config');
+
 const bodyParser =require('body-parser')
 
 
@@ -32,6 +34,8 @@ app.use(bodyParser.json());
 // app.use('/auth',singIn);
 app.post('/auth',singIn);
 app.get('/home',details);
+app.get('/config',config);
+
 app.use('/',(req,res)=>{
     res.json({
         success:true,

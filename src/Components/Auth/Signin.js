@@ -71,7 +71,7 @@ const hasError=(field)=>{
     return field && formState.touch[field]==true && formState.errors[field];
 
 }
-return <>
+return <><div class="container p-5">
 <div className="form-group">
   <label htmlFor="exampleInputEmail1">Email address</label>
   <input type="email" name="username" onChange={(evt)=>onChangeHandler(evt)} className="form-control"  aria-describedby="emailHelp" placeholder="Enter email"/>
@@ -84,5 +84,6 @@ return <>
 
 </div>
 <button disabled={!formState.valid} onClick={()=>onSubmit()} className="btn btn-primary">Submit</button>
+</div>
 </>
 }
