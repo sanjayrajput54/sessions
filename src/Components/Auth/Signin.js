@@ -3,6 +3,7 @@ import React,{useEffect,useState} from 'react';
 import * as utility from './../../Utility';
 
 import * as service from './../../Services';
+import {setToken} from './../../Store';
 
 const schema={
     username:{
@@ -57,12 +58,13 @@ const onSubmit=()=>{
     const payload={
         ...formState.values
     }
-    service.API_POST("auth",payload).then((res)=>{
-        debugger
+    service.API_POST("auth/signin",payload).then((res)=>{
+        if(res && res.data && res.data.success){
+            setToken(res.data.token);
+        }
         history.push('/home');
-        console.log("res : ",res)
+        // console.log("res : ",res)
     }).catch((err)=>{
-        debugger
         console.log("Err",err)
     })
 }

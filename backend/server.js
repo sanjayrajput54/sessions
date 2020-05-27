@@ -16,14 +16,16 @@ console.log("Server is running on : 8081");
 
 //Express
 
-const expres=require('express');
+const express=require('express');
 const cors = require('cors')
-const app=expres();
+const app=express();
 const {singIn} =require('./Controller/Auth');
 const {details} =require('./Controller/Home');
 const {config} =require('./Controller/Config');
-
 const bodyParser =require('body-parser')
+const authMiddlerware =require('./middleware');
+const authRoutes =require('./Routes/auth');
+const homeRoutes =require('./Routes/home');
 
 
 app.use(cors());
@@ -32,9 +34,18 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json());
 // app.use('/auth',singIn);
-app.post('/auth',singIn);
-app.get('/home',details);
-app.get('/config',config);
+// app.post('/auth',singIn);
+// app.get('/home',details);
+// app.get('/config',config);
+
+// const router=express.Router();
+
+// router.post('/signin',singIn);
+
+app.use('/auth',authRoutes);
+app.use('/home',authMiddlerware,homeRoutes);
+
+
 
 app.use('/',(req,res)=>{
     res.json({
