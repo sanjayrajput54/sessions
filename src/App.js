@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux'
+import AppStore from './AppStorage';
 // import logo from './logo.svg';
 import './App.css';
 import ClassComponent from './Components/ClassComponent';
@@ -24,7 +26,7 @@ constructor(props){
 
 config=()=>{
 
-  service.API_GET('/config').then(res=>{
+  service.API_GET('/auth/config').then(res=>{
 
     if(res && res.data && res.data.success){
     // if(res && res.success){
@@ -46,7 +48,7 @@ componentDidMount(){
     // return <><div>h2</div><div>3</div></>
     // return <React.Fragment><div>h2</div>,<div>3</div></React.Fragment>
 
-    return <Routes permissions={this.state.permissions}/>
+    return <Provider store={AppStore}><Routes permissions={this.state.permissions}/></Provider>
 
     {/* <SigninComponent/> */}
     {/* <ClassComponent appName={this.state.appName} /> */}

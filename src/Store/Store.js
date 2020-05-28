@@ -14,11 +14,15 @@ export const setToken=(token)=>{
 export const getToken=()=>{
     return new Promise((resolve,reject)=>{
         const token= sessionStorage.getItem("token");
-        if(token){
-            resolve(true);
-        }else{
-            reject(false);
-        }  
+        // if(token){
+        // resolve(token);
+        // }
+        resolve(token || null);
+
+        
+        // else{
+        //     reject(false);
+        // }  
         })
 }
 

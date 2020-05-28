@@ -6,12 +6,14 @@
 // }
 
 import axios from 'axios';
+import {getToken} from './../Store';
 
 const instance = axios.create({
     baseURL: 'http://localhost:8082',
     // timeout: 1000,
     headers: {'Content-Type': 'application/json'}
   });
+
   instance.defaults.headers['Content-Type']='application/json';
 
   
@@ -19,8 +21,13 @@ const instance = axios.create({
 
   export const API_GET=(url)=>{
 
+    return getToken().then((token)=>{
+      if(token){
+        instance.defaults.headers["token"]=token;
+      }
+      return instance.get(url);
+    });
 
-    return instance.get(url);
 
 
         // return new Promise((resolve,reject)=>{
@@ -33,18 +40,32 @@ const instance = axios.create({
 
   export const API_POST=(url,payload)=>{
 
+    return getToken().then((token)=>{
+      if(token){
+        instance.defaults.headers["token"]=token;
+      }
     return instance.post(url,payload);
+    })
 
   }
 
   export const API_PUT=(url,payload)=>{
       
+    return getToken().then((token)=>{
+      if(token){
+        instance.defaults.headers["token"]=token;
+      }
     return instance.put(url,payload);
+    })
 
   }
 
   export const API_DELETE=(url,payload)=>{
-      
+    return getToken().then((token)=>{
+      if(token){
+        instance.defaults.headers["token"]=token;
+      }
     return instance.delete(url,payload);
+    });
 
   }

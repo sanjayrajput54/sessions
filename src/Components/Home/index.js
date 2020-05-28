@@ -1,14 +1,16 @@
 import React,{useEffect,useState} from 'react';
 import * as service from './../../Services';
-import { stat } from 'fs';
 
-export default props=>{
+import {connect} from "react-redux"
 
+// export default props=>{
+
+const home=(props)=>{
 const [state,setState]=useState([]);
 
     const getDetails=()=>{
 
-        service.API_GET('/home').then((res)=>{
+        service.API_GET('/home/detail').then((res)=>{
         if(res && res.data && res.data.success){
             setState(res.data.data);
         }           
@@ -24,11 +26,32 @@ const [state,setState]=useState([]);
     },[])
 
 
+    const setData=()=>{
 
-    return <div class="container">
-   {state && state.map((item)=> <div class="row">
-      <div class="col">{item.name}</div>
-      <div class="col">{item.mobile}</div>
+
+    }
+
+    return <div className="container">
+   {state && state.map((item)=> <div className="row">
+      <div className="col">{item.name}</div>
+      <div className="col">{item.mobile}</div>
    </div>)}
   </div>
 }
+
+
+const mapStateToProps=state=>{
+debugger
+    return {
+     state:state
+    }
+}
+
+const mapDispatchToProps=dispatch=>{
+
+    return {
+    //  onToSetData:()=>dispatch()
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(home)

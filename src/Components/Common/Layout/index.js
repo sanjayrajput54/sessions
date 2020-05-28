@@ -5,7 +5,7 @@ import SideBar from '../LeftBar';
 export default props=>{
 
     const {permissions}=props;
-    return <div class="container">
+    return <div className="container">
              <Header/>
              <SideBar permissions={permissions} />
             {props.children}

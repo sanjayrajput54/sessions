@@ -61,9 +61,8 @@ const onSubmit=()=>{
     service.API_POST("auth/signin",payload).then((res)=>{
         if(res && res.data && res.data.success){
             setToken(res.data.token);
+            history.push('/home');
         }
-        history.push('/home');
-        // console.log("res : ",res)
     }).catch((err)=>{
         console.log("Err",err)
     })
@@ -73,7 +72,7 @@ const hasError=(field)=>{
     return field && formState.touch[field]==true && formState.errors[field];
 
 }
-return <><div class="container p-5">
+return <><div className="container p-5">
 <div className="form-group">
   <label htmlFor="exampleInputEmail1">Email address</label>
   <input type="email" name="username" onChange={(evt)=>onChangeHandler(evt)} className="form-control"  aria-describedby="emailHelp" placeholder="Enter email"/>
